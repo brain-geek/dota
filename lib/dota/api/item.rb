@@ -1,18 +1,16 @@
 module Dota
   module API
     class Item
-      MAPPING = YAML.load_file("data/items.yml").freeze
-
       attr_reader :id, :name
 
       def self.all
-        MAPPING.keys.map { |id| new(id) }
+        mapping.keys.map { |id| new(id) }
       end
 
       def initialize(id)
         @id = id
-        @internal_name = MAPPING[id][0]
-        @name = MAPPING[id][1]
+        @internal_name = self.class.mapping[id][0]
+        @name = self.class.mapping[id][1]
       end
 
       def image_url(type = :lg)
@@ -20,6 +18,11 @@ module Dota
       end
 
       private
+
+      def self.mapping
+        path = File.join(Gem::Specification.find_by_name('dota').gem_dir, 'data', 'items.yml')
+        @mapping ||= YAML.load_file(path).freeze
+      end
 
       attr_reader :internal_name
     end
