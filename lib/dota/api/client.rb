@@ -96,6 +96,13 @@ module Dota
         end
       end
 
+      def player_official_info(account_id)
+        response = get("IDOTA2Fantasy_570", "GetPlayerOfficialInfo")["result"]
+        if response && (official_info = response.merge({account_id: account_id}))
+          PlayerOfficialInfo.new(official_info)
+        end
+      end
+
       def get(interface, method, params = {}, *args)
         do_request(method, params, interface, *args)
       end
