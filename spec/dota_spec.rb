@@ -17,6 +17,15 @@ describe Dota do
       expect(Dota).to receive(:api).and_return(test_client)
     end
 
+    describe "#player_official_info" do
+      it "given an account_id returns a single player_official_info" do
+        VCR.use_cassette("GetPlayerOfficialInfo") do
+          off_info = api.player_official_info(dendi_account_id)
+          expect(off_info).to be_a Dota::API::PlayerOfficialInfo
+        end
+      end
+    end
+
     describe "#heroes" do
       it "given an id returns a single hero" do
         hero = api.heroes(43)
