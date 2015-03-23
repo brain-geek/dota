@@ -1,13 +1,12 @@
 describe Dota::API::PlayerOfficialInfo do
-  let(:dendi_id) { 70388657 }
   let(:info) do
     VCR.use_cassette("GetPlayerOfficialInfo") do
-      test_client.player_official_info(dendi_id)
+      test_client.player_official_info(dendi_account_id)
     end
   end
 
   specify "#account_id" do
-    expect(info.account_id).to eq dendi_id
+    expect(info.account_id).to eq dendi_account_id
   end
 
   specify "#name" do
