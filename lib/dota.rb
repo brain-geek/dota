@@ -24,6 +24,7 @@ require 'dota/api/match/player'
 require 'dota/api/match/side'
 require 'dota/api/scheduled_match'
 require 'dota/api/team'
+require 'dota/api/player_official_info'
 
 module Dota
   class << self

@@ -27,6 +27,10 @@ module SpecHelper
   def sample_team_id
     1375614
   end
+
+  def dendi_account_id
+    70388657
+  end
 end
 
 RSpec.configure do |config|
