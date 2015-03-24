@@ -5,10 +5,6 @@ describe Dota::API::PlayerOfficialInfo do
     end
   end
 
-  specify "#account_id" do
-    expect(info.account_id).to eq dendi_account_id
-  end
-
   specify "#name" do
     expect(info.name).to eq "Dendi"
   end

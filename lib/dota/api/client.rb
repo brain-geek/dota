@@ -98,7 +98,7 @@ module Dota
 
       def player_official_info(account_id)
         response = get("IDOTA2Fantasy_570", "GetPlayerOfficialInfo", accountid: account_id)["result"]
-        if response && (official_info = response.merge({"account_id" => account_id}))
+        if response && (official_info = response)
           PlayerOfficialInfo.new(official_info)
         end
       end

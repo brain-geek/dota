@@ -1,10 +1,6 @@
 module Dota
   module API
     class PlayerOfficialInfo < Entity
-      def account_id
-        raw["account_id"]
-      end
-
       def name
         raw["Name"]
       end
